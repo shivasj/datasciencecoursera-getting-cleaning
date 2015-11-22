@@ -1,9 +1,6 @@
 ## Set working Directory
 setwd("/Sync/Development/Git Forks/datasciencecoursera-getting-cleaning")
 
-## Library
-#library(dplyr)
-
 ## Read data from files
 # Test
 y_test <- read.table("test/y_test.txt", quote="\"",col.names="label")
@@ -26,7 +23,7 @@ merged_data <- rbind(test,train)
 ## 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
 mean_std_features <- features[grep("mean\\(\\)|std\\(\\)", features$feature), ]
 # increment by 2 because data has subjects and labels in the beginning
-mean_std_data <- merged_data[, c(1, 2, features_ext$id+2)]
+mean_std_data <- merged_data[, c(1, 2, mean_std_features$id+2)]
 
 ## 3. Uses descriptive activity names to name the activities in the data set
 mean_std_data$label <- activity_labels[mean_std_data$label, 2]
